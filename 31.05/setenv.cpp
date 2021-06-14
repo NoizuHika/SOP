@@ -4,11 +4,15 @@
 
 auto main(int argc, char* argv[]) -> int {
 
-    auto zmienna = argv[1];
+    auto variable = argv[1];
     auto value = argv[2];
     auto oldShell = getenv("SHELL");
 
-    setenv(zmienna, value, 1);
+    if(variable[0] != '-'){
+        setenv(variable, value, 1);
+    }else{
+        unsetenv(variable + 1);
+    }
 
     char* pointers[] = {oldShell, nullptr};
 
