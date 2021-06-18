@@ -22,16 +22,16 @@ auto execute(vector<string> args) -> int {
 	env.push_back(nullptr);
 	
 	execve(argv[0], argv.data(), env.data());
-	perror("OH NOES");
+	perror("Failure");
 	
 	exit(EXIT_FAILURE);
 }
 auto main(int argc, char* argv[]) -> int{
 	
-	auto args = vector<string>{}; //tablica zmiennej długości
+	auto args = vector<string>{};
 	
 	for(auto i = 1; i < argc; ++i){
-		args.push_back(argv[i]); //dodaje na koniec vectora
+		args.push_back(argv[i]); 
 	}
 	
 	execute(args);
